@@ -1,7 +1,5 @@
 # TA-Stock-System-Bot
-[![Updated Badge](https://badges.pufler.dev/updated/northern-64bit/TA-Stock-System-Bot)]()
 [![Visits Badge](https://badges.pufler.dev/visits/northern-64bit/TA-Stock-System-Bot)]()
-[![Created Badge](https://badges.pufler.dev/created/northern-64bit/TA-Stock-System-Bot)]()
 
 A open source discord bot for finance.
 
