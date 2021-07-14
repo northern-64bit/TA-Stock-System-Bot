@@ -1,9 +1,9 @@
 # TA-Stock-System-Bot
-[![Updated Badge](https://badges.pufler.dev/updated/northern-64bit/TA-Stock-System-Bot)](https://badges.pufler.dev)
-[![Visits Badge](https://badges.pufler.dev/visits/northern-64bit/TA-Stock-System-Bot)](https://badges.pufler.dev)
-[![Created Badge](https://badges.pufler.dev/created/northern-64bit/TA-Stock-System-Bot)](https://badges.pufler.dev)
+[![Updated Badge](https://badges.pufler.dev/updated/northern-64bit/TA-Stock-System-Bot)]()
+[![Visits Badge](https://badges.pufler.dev/visits/northern-64bit/TA-Stock-System-Bot)]()
+[![Created Badge](https://badges.pufler.dev/created/northern-64bit/TA-Stock-System-Bot)]()
 
-A open source finance discord bot.
+A open source discord bot for finance.
 
 ## Set Up
 First of all you need to download the main file, then you have to enter the following API tokens in the beginning of the main file directly after the dependencies:
