@@ -16,11 +16,16 @@ import urllib
 import urllib.request
 from html_table_parser.parser import HTMLTableParser
 import pandas_datareader.data as web
-from tabulate import tabulate
 
+IMGUR_CLIENT_ID = 'ENTER ID HERE'
+ALPHA_VANTAGE_KEY = 'ENTER KEY HERE'
+NYT_KEY = 'ENTER KEY HERE'
+FMP_API_KEY = 'ENTER KEY HERE'
+MBOUM_KEY = 'ENTER KEY HERE'
+DISCORD_BOT_TOKEN = 'ENTER TOKEN HERE'
 
 client = discord.Client()
-im = pyimgur.Imgur(os.getenv('IMGUR_CLIENT_ID'))
+im = pyimgur.Imgur(IMGUR_CLIENT_ID)
 
 USER_AGENT = {
   'User-Agent': ('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36')
@@ -71,7 +76,7 @@ def get_datastock(stock, begin_date):
   return data_stock
 
 def get_balance(stock):
-  url = 'https://www.alphavantage.co/query?function=BALANCE_SHEET&symbol={}&apikey={}'.format(stock.upper(), os.getenv('KEY'))
+  url = 'https://www.alphavantage.co/query?function=BALANCE_SHEET&symbol={}&apikey={}'.format(stock.upper(), ALPHA_VANTAGE_KEY)
   response = requests.get(url)
   dictr = response.json()
   recs = dictr['quarterlyReports']
@@ -81,7 +86,7 @@ def get_balance(stock):
   return quarter_balance_sheet, annual_balance_sheet
 
 def get_cash_flow(stock):
-  url = 'https://www.alphavantage.co/query?function=CASH_FLOW&symbol={}&apikey={}'.format(stock.upper(), os.getenv('KEY'))
+  url = 'https://www.alphavantage.co/query?function=CASH_FLOW&symbol={}&apikey={}'.format(stock.upper(), ALPHA_VANTAGE_KEY)
   response = requests.get(url)
   dictr = response.json()
   recs = dictr['quarterlyReports']
@@ -91,7 +96,7 @@ def get_cash_flow(stock):
   return quarter_cash_flow, annual_cash_flow
 
 def get_income(stock):
-  url = 'https://www.alphavantage.co/query?function=INCOME_STATEMENT&symbol={}&apikey={}'.format(stock.upper(), os.getenv('KEY'))
+  url = 'https://www.alphavantage.co/query?function=INCOME_STATEMENT&symbol={}&apikey={}'.format(stock.upper(), ALPHA_VANTAGE_KEY)
   response = requests.get(url)
   dictr = response.json()
   recs = dictr['quarterlyReports']
@@ -339,7 +344,7 @@ async def on_message(message):
     recent_message = 'insider'
 
   elif message.content.startswith('?news'):
-    url = 'https://api.nytimes.com/svc/topstories/v2/business.json?api-key={}'.format(os.getenv('NYT'))
+    url = 'https://api.nytimes.com/svc/topstories/v2/business.json?api-key={}'.format(NYT_KEY)
     response = requests.get(url)
     page = response.json()
     text = ''
@@ -606,8 +611,6 @@ async def on_message(message):
         recent_message = 'stock'
         fig.clear(True)
 
-      elif message.content.startswith('?'+stock+' backtest cross'):
-        backtest = True
     elif message.content.startswith('?'+stock+' insider'):
       insider = True
       def url_get_contents(url):
@@ -643,7 +646,6 @@ async def on_message(message):
     elif message.content.startswith('?'+stock+' senator'):
       senator = True
       text_str = ''
-      url = 'https://api.eclect.us/symbol/' + stock
       response = requests.get('https://senate-stock-watcher-data.s3-us-west-2.amazonaws.com/aggregate/all_ticker_transactions.json')
       page = response.json()
       i = 0
@@ -696,7 +698,7 @@ async def on_message(message):
     else:
       temp_date = '2010-01-01'
     if backtest == False and insider == False and senator == False:
-      url = 'https://financialmodelingprep.com/api/v3/etf/list?apikey={}'.format(os.getenv('FMP API'))
+      url = 'https://financialmodelingprep.com/api/v3/etf/list?apikey={}'.format(FMP_API_KEY)
       response = requests.get(url)
       page = response.json()
       for record in page:
@@ -723,7 +725,7 @@ async def on_message(message):
         title = name + ' Data'
 
         try:
-          requestResponse = requests.get(" https://mboum.com/api/v1/qu/quote/profile/?symbol={}&apikey={}".format(stock, os.getenv('MBOUM')))
+          requestResponse = requests.get(" https://mboum.com/api/v1/qu/quote/profile/?symbol={}&apikey={}".format(stock, MBOUM_KEY))
           etf_data = requestResponse.json()
           desc_etf = etf_data['longBusinessSummary']
           content = desc_etf
@@ -1068,4 +1070,4 @@ async def on_message(message):
     '''
         
 keep_alive()
-client.run(os.getenv('TOKEN'))
+client.run(DISCORD_BOT_TOKEN)
