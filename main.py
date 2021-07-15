@@ -17,12 +17,12 @@ import urllib.request
 from html_table_parser.parser import HTMLTableParser
 import pandas_datareader.data as web
 
-IMGUR_CLIENT_ID = 'ENTER ID HERE'
-ALPHA_VANTAGE_KEY = 'ENTER KEY HERE'
-NYT_KEY = 'ENTER KEY HERE'
-FMP_API_KEY = 'ENTER KEY HERE'
-MBOUM_KEY = 'ENTER KEY HERE'
-DISCORD_BOT_TOKEN = 'ENTER TOKEN HERE'
+IMGUR_CLIENT_ID = 'ENTER ID HERE' # Get the Imgur client_id here: https://apidocs.imgur.com/#intro
+ALPHA_VANTAGE_KEY = 'ENTER KEY HERE' # Get the API key here: https://www.alphavantage.co/support/#api-key
+NYT_KEY = 'ENTER KEY HERE' # Get your New York Times API key here: https://developer.nytimes.com/get-started
+FMP_API_KEY = 'ENTER KEY HERE' # Get the Financial Modeling Prep API key here: https://financialmodelingprep.com/developer/docs
+MBOUM_KEY = 'ENTER KEY HERE' # Get your MBOUM API key here: https://mboum.com/api/welcome
+DISCORD_BOT_TOKEN = 'ENTER TOKEN HERE' # Get your Discord Bot token here: https://discord.com/developers
 
 client = discord.Client()
 im = pyimgur.Imgur(IMGUR_CLIENT_ID)
