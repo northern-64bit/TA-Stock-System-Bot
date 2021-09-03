@@ -3,7 +3,6 @@ import os
 import pandas as pd
 import pandas_datareader as pdr
 import datetime
-from keep_alive import keep_alive
 import matplotlib.pyplot as plt
 import pyimgur
 import lxml
@@ -1069,5 +1068,4 @@ async def on_message(message):
         print(0)
     '''
         
-keep_alive()
 client.run(DISCORD_BOT_TOKEN)
